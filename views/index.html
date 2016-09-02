@@ -25,6 +25,25 @@
           <h4><a href="/api">Read My API Documentation</a></h4>
         </div>
       </div>
+      <div class="row">
+        <div id='profile-list' class="col-xs-8 col-sm-6 col-sm-offset-3 col-xs-offset-2 col-md-4 col-md-offset-4">
+          <script id="profile-template" type="text/x-handlebars-template">
+            <p>{{name}}</p>
+            <p><a href='{{githubLink}}'>Github</a></p>
+            <p><a href='{{personalSiteLink}}'>Personal Site</a></p>
+          </script>
+        </div>
+      </div>
+      <hr>
+      <div id="cities-list">
+        <script id="cities-template" type="text/x-handlebars-template">
+          {{#each cities}}
+            <p>{{name}}</p>
+            <p>{{location}}</p>
+            <p>{{description}}</p>
+          {{/each}}
+        </script>
+      </div>
     </div>
   </body>
 </html>

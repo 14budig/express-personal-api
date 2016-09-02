@@ -100,6 +100,11 @@ app.delete('/api/cities/:id', function(req, res){
   });
 });
 
+app.put('/api/cities/:id', function(req, res){
+  db.City.findOneAndUpdate({id: req.params.id}, {$set:{description: req.body.description}}, {new: true}, function(err, city){
+    res.json(city);
+  });
+});
 /**********
  * SERVER *
  **********/
