@@ -45,19 +45,30 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;) //NO!
+    woopsIForgotToDocumentAllMyEndpoints: true,
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/14budig/express-personal-api/README.md", // CHANGE ME
-    baseUrl: "https://ancient-shore-92488.herokuapp.com/", // CHANGE ME
+    documentationUrl: "https://github.com/14budig/express-personal-api/README.md",
+    baseUrl: "https://ancient-shore-92488.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "GET", path: "/api/monsters", description: "List of monsters from games"},
-      {method: "POST", path: "/api/monsters", description: "Add a monster to list"},
-      {method: "PUT", path: "/api/monsters", description: "Update a monster to list"},
-      {method: "DELETE", path: "/api/monsters", description: "Remove a monster to list"}
+      {method: "GET", path: "/api/cities", description: "List of cool cities"},
+      {method: "POST", path: "/api/cities", description: "Add a city to list"},
+      {method: "PUT", path: "/api/cities", description: "Update a city to list"},
+      {method: "DELETE", path: "/api/cities", description: "Remove a city from list"}
     ]
   })
+});
+
+app.get('/api/profile', function(req, res){
+  res.json({
+    name: "Nick Budig",
+    githubLink: "https://github.com/14budig",
+    githubProfileImage: 'https://avatars2.githubusercontent.com/u/12077419?v=3&s=460',
+    personalSite: '14budig.github.io',
+    currentCity: "San Francisco",
+    pets: []
+  });
 });
 
 /**********
