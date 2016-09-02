@@ -8,5 +8,4 @@ var CitySchema = new Schema({
 });
 
 var City = mongoose.model('City', CitySchema);
-module.exports(City);
 module.exports = City;

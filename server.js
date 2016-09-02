@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+ var db = require('./models');
 
 /**********
  * ROUTES *
@@ -65,10 +65,17 @@ app.get('/api/profile', function(req, res){
     name: "Nick Budig",
     githubLink: "https://github.com/14budig",
     githubProfileImage: 'https://avatars2.githubusercontent.com/u/12077419?v=3&s=460',
-    personalSite: '14budig.github.io',
+    personalSite: 'https://14budig.github.io',
     currentCity: "San Francisco",
     pets: []
   });
+});
+
+app.get('/api/cities', function(req, res){
+  db.City.find(function(err, cities){
+    if (err) { return console.log("index error: " + err); }
+    res.json(cities);
+  })
 });
 
 /**********
