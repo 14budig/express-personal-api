@@ -64,8 +64,8 @@ app.get('/api/profile', function(req, res){
   res.json({
     name: "Nick Budig",
     githubLink: "https://github.com/14budig",
-    githubProfileImage: 'https://avatars2.githubusercontent.com/u/12077419?v=3&s=460',
-    personalSite: 'https://14budig.github.io',
+    githubProfileImage: 'https://avatars2.githubusercontent.com/u/12077419',
+    personalSiteLink: 'https://14budig.github.io',
     currentCity: "San Francisco",
     pets: []
   });
@@ -76,6 +76,28 @@ app.get('/api/cities', function(req, res){
     if (err) { return console.log("index error: " + err); }
     res.json(cities);
   })
+});
+
+app.get('/api/cities/:id', function(req, res){
+  db.City.findOne({_id: req.params.id},function(err, cities){
+    if (err) { return console.log("index error: " + err); }
+    res.json(cities);
+  });
+});
+
+app.post('/api/cities', function(req,res){
+  db.City.save({name: req.body.name,
+              location: req.body.location,
+              description: req.body.description
+  }, function(err, savedCity){
+    res.json(savedCity);
+  });
+});
+
+app.delete('/api/cities/:id', function(req, res){
+  db.City.findOneAndRemove({_id: req.params.id}, function(error, city){
+    res.json(city);
+  });
 });
 
 /**********
